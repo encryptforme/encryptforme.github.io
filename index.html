@@ -10,7 +10,7 @@ e<!DOCTYPE html>
       <script>
       Module['wasmBinaryFile'] = 'binary/openssl.wasm';
       Module.onRuntimeInitialized = function() {
-        var message = "Hello, world!";
+        var message = "Hello, worlds!";
         var hash = OpenSSL.SHA256(message);
         var hashElement = document.getElementById("hash");
         hashElement.textContent = hash;
