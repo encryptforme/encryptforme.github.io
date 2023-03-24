@@ -1,4 +1,3 @@
 # encryptforme.github.io  
+Encrypt your files with a password or passphrase using OpenSSL open-source cryptographic software library.
 Visit www.encryptforme.com.  
-Copy/paste your text, messages or data into the input field and encypt using your password or passphrase.  
-OpenSSL open-source cryptographic software library is used for encryption.  
