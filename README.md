@@ -1,3 +1,4 @@
-# encryptforme.github.io.  
-Visit encryptforme.com.  
-Copy/paste your text, messages, data into the input field to get it encypted with OpenSSL.  
+# encryptforme.github.io  
+Visit www.encryptforme.com.  
+Copy/paste your text, messages or data into the input field and encypt.
+OpenSSL is used for encryption.  
