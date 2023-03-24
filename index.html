@@ -16,6 +16,11 @@
   <script src="getAndSetDate.js">
     Module['wasmBinaryFile'] = 'openssl/openssl.wasm';
     // Call OpenSSL functions here
+    Module.onRuntimeInitialized = function() {
+    // OpenSSL is now ready to use
+    };
+    var message = "Hello, world!";
+    var hash = OpenSSL.SHA256(message);
    </script>
 </body>
 </html>
