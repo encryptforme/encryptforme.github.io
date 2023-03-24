@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="style.css">
   <title>My Web Page</title>
-  <script src="openssl/openssl.js"></script>
+  <script src="binary/openssl.js"></script>
 </head>
 <body>
   <p>Encrypt your text, messages or any other type of data in your browser.</p>
@@ -13,18 +13,16 @@
   <span>&copy;</span>
   <span id="dateHere"></span>
   <span>EncryptForMe.com</span>
-  <script src="getAndSetDate.js">
-    Module['wasmBinaryFile'] = 'binary/openssl.wasm';
-  </script>
-  <script>
-    // Call OpenSSL functions here
-    Module.onRuntimeInitialized = function() {
-    // OpenSSL is now ready to use
+  <script src="getAndSetDate.js"></script>
+    <script>
+      Module['wasmBinaryFile'] = 'binary/openssl.wasm'; // Call OpenSSL functions below
+      Module.onRuntimeInitialized = function() {
+      // OpenSSL is now ready to use
         var message = "Hello, world!";
         var hash = OpenSSL.SHA256(message);
         document.write(hash);
-    };
-   </script>
+      };
+    </script>
 </body>
 </html>
 
