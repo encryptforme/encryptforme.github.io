@@ -15,12 +15,15 @@
   <span>EncryptForMe.com</span>
   <script src="getAndSetDate.js">
     Module['wasmBinaryFile'] = 'binary/openssl.wasm';
+  </script>
+  <script>
     // Call OpenSSL functions here
     Module.onRuntimeInitialized = function() {
     // OpenSSL is now ready to use
+        var message = "Hello, world!";
+        var hash = OpenSSL.SHA256(message);
+        document.write(hash);
     };
-    var message = "Hello, world!";
-    var hash = OpenSSL.SHA256(message);
    </script>
 </body>
 </html>
