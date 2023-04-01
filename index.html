@@ -7,14 +7,8 @@
   <script src="binary/openssl.js"></script>
   
     <script>
-      Module['wasmBinaryFile'] = 'binary/openssl.wasm';
-      Module.onRuntimeInitialized = function() {
-        var message = "Hello, worlds!";
-        //var hash = OpenSSL.SHA256(message);
-        //document.write(message);
-        var messageElement = document.getElementById("message");
-        messageElement.textContent = message;
-      };
+      var myText = "Hello, World!";
+      document.write(myText);
     </script>
   
 </head>
@@ -25,7 +19,7 @@
   <span id="dateHere"></span>
   <span>EncryptForMe.com</span>
   <script src="getAndSetDate.js"></script>
-      <p>Your message: Hello <span id="message"></span></p>
+      <p>Your message: Hello <span id="myText"></span></p>
 </body>
 </html>
 
