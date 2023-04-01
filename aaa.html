@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>OpenSSL WebAssembly Example</title>
-    <script src="binary/openssl.js"></script>
+	<script src="binary/openssl.js"></script>
     <script>
       function sha256(data) {
         const hashPtr = Module._malloc(32);
@@ -25,17 +25,20 @@
       }
 
       function calculateHash() {
-        const data = document.getElementById("data").value;
-        const hash = sha256(data);
-        document.getElementById("output").innerHTML = hash;
+        const fileInput = document.getElementById("file-input");
+        const file = fileInput.files[0];
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          const hash = sha256(event.target.result);
+          document.getElementById("output").innerHTML = hash;
+        };
+        reader.readAsArrayBuffer(file);
       }
     </script>
   </head>
-  
   <body>
-    <input type="text" id="data" placeholder="Enter data" />
+    <input type="file" id="file-input" />
     <button onclick="calculateHash()">Calculate Hash</button>
     <p id="output"></p>
   </body>
-  
 </html>

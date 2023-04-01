@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>My Web Page</title>
+  
+  <script src="binary/openssl.js"></script>
+ 
+   <script>
+  // Load the OpenSSL WebAssembly module
+const Module = {
+  wasmBinary: Uint8Array.from(atob(OPENSSL_WASM_BASE64), c => c.charCodeAt(0)),
+  onRuntimeInitialized: () => {
+    // OpenSSL is now ready to use
+    OpenSSL(Module);
+  },
+};
+    </script>
+
+
+    <script>
+      var myText = "Hello, World!";
+      document.write(myText);
+    </script>
+  
+</head>
+<body>
+  <p>Encrypt your text, messages or any other type of data in your browser.</p>
+  <p class="rainbow-text">Coming soon...</p>
+
+  <span>&copy;</span>
+  <span id="dateHere"></span>
+  <span>EncryptForMe.com</span>
+  <script src="getAndSetDate.js"></script>
+  <p>Your message. Hash is: <span id="hash"></span></p>
+  <script> 
+     // Initialize OpenSSL and call functions
+function sha256(data) {
+  // Calculate the SHA256 hash of the data
+  const hashPtr = Module._malloc(32);
+  const dataPtr = Module._malloc(data.length);
+  Module.HEAPU8.set(data, dataPtr);
+  Module.ccall("EVP_sha256", "number", ["number", "number", "number"], [
+    dataPtr,
+    data.length,
+    hashPtr,
+  ]);
+  const hash = Module.HEAPU8.subarray(hashPtr, hashPtr + 32);
+  Module._free(hashPtr);
+  Module._free(dataPtr);
+  return hash;
+}
+
+const hash = sha256("Hello, World!");
+ document.write(hash);
+  </script>
+
+</body>
+</html>
+
