@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>OpenSSL WebAssembly Example</title>
+    <script src="binary/openssl.js"></script>
+    <script>
+      function sha256(data) {
+        const hashPtr = Module._malloc(32);
+        const dataPtr = Module._malloc(data.length);
+        Module.HEAPU8.set(data, dataPtr);
+        Module.ccall("EVP_sha256", "number", ["number", "number", "number"], [
+          dataPtr,
+          data.length,
+          hashPtr,
+        ]);
+        const hash = Module.HEAPU8.subarray(hashPtr, hashPtr + 32);
+        Module._free(hashPtr);
+        Module._free(dataPtr);
+        return Array.prototype.map
+          .call(hash, function (x) {
+            return ("00" + x.toString(16)).slice(-2);
+          })
+          .join("");
+      }
+
+      function calculateHash() {
+        const data = document.getElementById("data").value;
+        const hash = sha256(data);
+        document.getElementById("output").innerHTML = hash;
+      }
+    </script>
+  </head>
+  
+  <body>
+    <input type="text" id="data" placeholder="Enter data" />
+    <button onclick="calculateHash()">Calculate Hash</button>
+    <p id="output"></p>
+  </body>
+  
+</html>
