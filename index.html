@@ -13,29 +13,7 @@
   <span>&copy;</span>
   <span id="dateHere"></span>
   <span>EncryptForMe.com</span>
-  <script src="getAndSetDate.js"></script>
-
-  <script>
-    function pingDevice(ip) {
-      const url = `https://${ip}/`; // Replace "ping-endpoint" with an actual endpoint on the target device
-
-      fetch(url)
-        .then(response => {
-          if (response.ok) {
-            console.log(`Device at ${ip} is reachable.`);
-          } else {
-            console.log(`Device at ${ip} is not reachable.`);
-          }
-        })
-        .catch(error => {
-          console.log(`An error occurred while pinging ${ip}: ${error}`);
-        });
-    }
-
-    // Usage
-    pingDevice("192.168.0.1");
-  </script>
-  
+  <script src="getAndSetDate.js"></script>  
 </body>
 
 </html>
