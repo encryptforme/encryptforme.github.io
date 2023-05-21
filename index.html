@@ -64,6 +64,20 @@ pc.onicecandidate = (event) => {
  </script>
 
   
+   <script>
+  fetch('https://api.ipify.org?format=json')
+  .then((response) => response.json())
+  .then((data) => {
+    const ipAddress = data.ip;
+    console.log('Local IP address:', ipAddress);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+   </script>
+
+  
+  
 </body>
 
 </html>
