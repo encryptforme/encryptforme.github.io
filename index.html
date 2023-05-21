@@ -16,7 +16,16 @@
   <script src="getAndSetDate.js"></script>
   <script src="ping.min.js"></script>
   
-  <script>const ping = new Ping(); ping.ping("192.168.0.1", (err, data) => console.log(data)); </script>
+  <script>    
+    const ping = new Ping();
+    ping.ping("192.168.0.1", (err, data) => {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log(data);
+      }
+    });
+  </script>
   
 </body>
 
