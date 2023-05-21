@@ -14,29 +14,6 @@
   <span id="dateHere"></span>
   <span>EncryptForMe.com</span>
   <script src="getAndSetDate.js"></script>
- 
-  <script>
-    //this sript will be restricted by the Mixed Context, if requesting http://, not https://
-    //this script also needs CORS enabled on the webserver: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS and https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSMissingAllowOrigin?utm_source=devtools&utm_medium=firefox-cors-errors&utm_campaign=default and https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin
-    function pingDevice(ip) {
-      const url = `https://${ip}/`; // Replace "ping-endpoint" with an actual endpoint on the target device
-
-      fetch(url)
-        .then(response => {
-          if (response.ok) {
-            console.log(`Device at ${ip} is reachable.`);
-          } else {
-            console.log(`Device at ${ip} is not reachable.`);
-          }
-        })
-        .catch(error => {
-          console.log(`An error occurred while pinging ${ip}: ${error}`);
-        });
-    }
-    // Usage
-    pingDevice("192.168.0.1");
-  </script>
-
 </body>
 
 </html>
