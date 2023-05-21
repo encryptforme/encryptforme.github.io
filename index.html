@@ -35,6 +35,35 @@
     pingDevice("192.168.0.1");
   </script>
   
+  
+ <script>
+ // Create a temporary RTCPeerConnection object
+const pc = new RTCPeerConnection();
+
+// Create a data channel
+pc.createDataChannel('');
+
+// Create an offer and set the local description
+pc.createOffer().then((offer) => {
+  pc.setLocalDescription(offer);
+});
+
+// Listen for ICE candidate events
+pc.onicecandidate = (event) => {
+  if (event.candidate) {
+    // Extract the IP address from the candidate
+    const ipAddress = event.candidate.candidate.split(' ')[4];
+
+    // Log the local IP address
+    console.log('Local IP address:', ipAddress);
+
+    // Close the peer connection
+    pc.close();
+  }
+};
+ </script>
+
+  
 </body>
 
 </html>
