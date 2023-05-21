@@ -37,19 +37,6 @@
     pingDevice("192.168.0.1");
   </script>
 
-  
-  <script>
-  if ('connection' in navigator) {
-  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-  const localIP = connection.localAddress;
-  console.log('Local IP address:', localIP);
-} else {
-  console.error('Network Information API not supported.');
-}
-</script>
-
-  
-  
 </body>
 
 </html>
